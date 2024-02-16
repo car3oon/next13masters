@@ -35,7 +35,7 @@ const products: IProduct[] = [
 	{
 		id: 4,
 		category: "Beanies",
-		name: "Saleor Beanie Beanie",
+		name: "Saleor Beanie",
 		price: 14.99,
 		coverImage: {
 			alt: "Saleor Beanie",

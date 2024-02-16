@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { IProduct } from "@/app/types";
+import { formatPrice } from "@/app/utils";
 
 type ProductListItemProps = {
 	product: IProduct;
@@ -17,16 +18,16 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
 					width={300}
 				/>
 			</div>
-			<div className="mt-2 flex justify-between">
+			<div className="mt-2 flex items-center justify-between">
 				<div>
 					<h3>{product.name}</h3>
 					<p className="text-sm text-gray-500">
 						<span className="sr-only">Kategoria</span> {product.category}
 					</p>
-					<p className="text-sm font-medium text-gray-800">
-						<span className="sr-only">Cena:</span> {product.price}
-					</p>
 				</div>
+				<p className="text-md font-medium text-gray-800">
+					<span className="sr-only">Cena:</span> {formatPrice(product.price)}
+				</p>
 			</div>
 		</li>
 	);
