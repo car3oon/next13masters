@@ -14,7 +14,14 @@
 	],
 	"rules": {
 		// sort imports
-		"import/order": "error",
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+				"alphabetize": { "order": "asc", "caseInsensitive": true },
+				"newlines-between": "always"
+			}
+		],
 
 		// no let exports
 		"import/no-mutable-exports": "error",
