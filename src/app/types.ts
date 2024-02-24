@@ -7,4 +7,5 @@ export type IProduct = {
 		alt: string;
 		src: string;
 	};
+	description: string;
 };
