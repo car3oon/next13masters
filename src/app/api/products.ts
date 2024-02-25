@@ -1,4 +1,5 @@
-import type { IProduct } from "../types";
+import { PRODUCTS_PER_PAGE } from "@/app/constants";
+import type { IProduct } from "@/app/types";
 
 type IProductResponseItem = {
 	id: string;
@@ -29,8 +30,20 @@ const productResponseItemToProduct = (product: IProductResponseItem): IProduct =
 };
 
 export const getProductsList = async () => {
-	const response = await fetch("https://naszsklep-api.vercel.app/api/products ");
+	const response = await fetch("https://naszsklep-api.vercel.app/api/products?take=20");
 	const productsResponse = (await response.json()) as IProductResponseItem[];
+	const products = productsResponse.map(productResponseItemToProduct);
+
+	return products;
+};
+
+export const getProductsListPaginated = async (page: string) => {
+	const productsPerPage = PRODUCTS_PER_PAGE;
+	const pageNumber = Number(page) - 1;
+	const res = await fetch(
+		`https://naszsklep-api.vercel.app/api/products?take=${productsPerPage}&offset=${pageNumber}`,
+	);
+	const productsResponse = (await res.json()) as IProductResponseItem[];
 	const products = productsResponse.map(productResponseItemToProduct);
 
 	return products;

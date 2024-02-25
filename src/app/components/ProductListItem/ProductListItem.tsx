@@ -28,11 +28,11 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
 						<h3>{product.name}</h3>
 					</Link>
 					<p className="text-sm text-gray-500">
-						<span className="sr-only">Kategoria</span> {product.category}
+						<span className="sr-only">Category</span> {product.category}
 					</p>
 				</div>
 				<p className="text-md font-medium text-gray-800">
-					<span className="sr-only">Cena:</span> {formatPrice(product.price)}
+					<span className="sr-only">Price:</span> {formatPrice(product.price)}
 				</p>
 			</div>
 		</li>
