@@ -1,5 +1,5 @@
 export type IProduct = {
-	id: number;
+	id: string;
 	name: string;
 	category: string;
 	price: number;
@@ -7,4 +7,5 @@ export type IProduct = {
 		alt: string;
 		src: string;
 	};
+	description: string;
 };

@@ -1,5 +1,5 @@
-import { ProductListItem } from "@/ui/ProductListItem";
 import type { IProduct } from "@/app/types";
+import { ProductListItem } from "@/ui/ProductListItem";
 
 type ProductListProps = {
 	products: IProduct[];
