@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { IProduct } from "@/app/types";
 import { formatPrice } from "@/app/utils";
+import type { ProductListItemFragment } from "@/gql/graphql";
 
 type ProductListItemProps = {
-	product: IProduct;
+	product: ProductListItemFragment;
 };
 
 export const ProductListItem = ({ product }: ProductListItemProps) => {
@@ -14,10 +14,10 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
 			<div className="aspect-square overflow-hidden rounded-md border bg-slate-50 hover:bg-slate-100">
 				<Link href={`/product/${product.id}`}>
 					<Image
-						alt={product.coverImage.alt}
+						alt={product.images[0].alt || product.name}
 						className="h-full w-full object-cover object-center p-4 transition-transform hover:scale-105"
 						height={300}
-						src={product.coverImage.src}
+						src={product.images[0].url}
 						width={300}
 					/>
 				</Link>
@@ -28,7 +28,7 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
 						<h3>{product.name}</h3>
 					</Link>
 					<p className="text-sm text-gray-500">
-						<span className="sr-only">Category</span> {product.category}
+						<span className="sr-only">Category</span> {product.categories[0]?.name || "No category"}
 					</p>
 				</div>
 				<p className="text-md font-medium text-gray-800">

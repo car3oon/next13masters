@@ -1,0 +1,7 @@
+fragment ProductList on Query {
+	products(take: 10) {
+		data {
+			...ProductListItem
+		}
+	}
+}
