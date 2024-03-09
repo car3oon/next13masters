@@ -21,7 +21,8 @@ export const ActiveLink = ({
 	exact,
 }: ActiveLinkProps) => {
 	const pathname = usePathname();
-	const isNotExact = pathname !== "/" && href.includes(pathname.split("/")[1]);
+	const firstPath = pathname.split("/")[1] || "";
+	const isNotExact = pathname !== "/" ? href.includes(firstPath) : false;
 	const isActive = exact ? pathname === href : isNotExact;
 
 	return (
