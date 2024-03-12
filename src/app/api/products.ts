@@ -1,6 +1,11 @@
 import { PRODUCTS_PER_PAGE } from "@/app/constants";
 import type { IProduct } from "@/app/types";
-import { ProductsGetByCategorySlugDocument, ProductsGetListDocument } from "@/gql/graphql";
+import {
+	ProductGetDocument,
+	ProductsGetByCategorySlugDocument,
+	ProductsGetListDocument,
+	type ProductListItemFragment,
+} from "@/gql/graphql";
 
 import { executeGraphql } from "./lib";
 
@@ -50,11 +55,12 @@ export const getProductsListPaginated = async (page: string) => {
 	return products;
 };
 
-export const getProductById = async (productId: IProductResponseItem["id"]) => {
-	const response = await fetch(`https://naszsklep-api.vercel.app/api/products/${productId}`);
-	const productResponse = (await response.json()) as IProductResponseItem;
+export const getProductById = async (productId: ProductListItemFragment["id"]) => {
+	const response = await executeGraphql(ProductGetDocument, {
+		id: productId,
+	});
 
-	return productResponseItemToProduct(productResponse);
+	return response.product;
 };
 
 export const getProductsByCategorySlug = async (categorySlug: string) => {

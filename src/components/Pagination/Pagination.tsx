@@ -29,3 +29,5 @@ export const Pagination = ({ productsCount }: PaginationProps) => {
 		</nav>
 	);
 };
+
+Pagination.displayName = "Pagination";

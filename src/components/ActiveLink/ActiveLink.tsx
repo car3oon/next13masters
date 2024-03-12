@@ -35,3 +35,5 @@ export const ActiveLink = ({
 		</Link>
 	);
 };
+
+ActiveLink.displayName = "ActiveLink";

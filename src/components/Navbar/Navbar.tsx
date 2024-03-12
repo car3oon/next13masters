@@ -13,6 +13,11 @@ export const Navbar = () => {
 					</ActiveLink>
 				</li>
 				<li>
+					<ActiveLink activeClassName={activeClasses} exact={false} href="/categories">
+						Categories
+					</ActiveLink>
+				</li>
+				<li>
 					<ActiveLink activeClassName={activeClasses} exact={false} href="/products/1">
 						All
 					</ActiveLink>
@@ -21,3 +26,5 @@ export const Navbar = () => {
 		</nav>
 	);
 };
+
+Navbar.displayName = "Navbar";

@@ -8,3 +8,5 @@ export const SuggestedProducts = async () => {
 	await sleep(5000);
 	return <ProductList products={products.slice(-4)} />;
 };
+
+SuggestedProducts.displayName = "SuggestedProducts";

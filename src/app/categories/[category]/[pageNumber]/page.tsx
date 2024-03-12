@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getProductsByCategorySlug } from "@/app/api/products";
 import { ProductList } from "@/components";
 
-export default async function CategoryProductPage({
+export default async function CategoryPage({
 	params,
 }: {
 	params: { category: string; pageNumber: string };
