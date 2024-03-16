@@ -69,9 +69,11 @@ export default async function ProductDetailsPage({ params }: { params: { product
 				</div>
 			</div>
 			<aside>
-				<Suspense fallback="loading...">
-					<SuggestedProducts />
-				</Suspense>
+				{product.categories[0] && (
+					<Suspense fallback="loading...">
+						<SuggestedProducts category={product.categories[0].slug} />
+					</Suspense>
+				)}
 			</aside>
 		</div>
 	);

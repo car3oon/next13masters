@@ -1,12 +1,25 @@
-import { getProductsList } from "@/app/api/products";
+import { notFound } from "next/navigation";
+
+import { getProductsByCategorySlug } from "@/app/api/products";
 import { ProductList } from "@/ui/ProductList";
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+type SuggestedProductsProps = {
+	category: string;
+};
 
-export const SuggestedProducts = async () => {
-	const products = await getProductsList();
-	await sleep(5000);
-	return <ProductList products={products.slice(-4)} />;
+export const SuggestedProducts = async ({ category }: SuggestedProductsProps) => {
+	const response = await getProductsByCategorySlug(category);
+
+	if (!response?.products) {
+		throw notFound();
+	}
+
+	return (
+		<div data-testid="related-products">
+			<h2 className="mb-5 text-xl font-bold">Suggested products:</h2>
+			<ProductList products={response?.products.slice(-4)} />;
+		</div>
+	);
 };
 
 SuggestedProducts.displayName = "SuggestedProducts";
