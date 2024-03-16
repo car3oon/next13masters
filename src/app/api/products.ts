@@ -3,6 +3,7 @@ import type { IProduct } from "@/app/types";
 import {
 	ProductGetDocument,
 	ProductsGetByCategorySlugDocument,
+	ProductsGetByCollectionSlugDocument,
 	ProductsGetListDocument,
 	type ProductListItemFragment,
 } from "@/gql/graphql";
@@ -68,5 +69,13 @@ export const getProductsByCategorySlug = async (categorySlug: string) => {
 		slug: categorySlug,
 	});
 
-	return graphqlResponse.category?.products;
+	return graphqlResponse.category;
+};
+
+export const getProductsByCollectionSlug = async (collectionSlug: string) => {
+	const graphqlResponse = await executeGraphql(ProductsGetByCollectionSlugDocument, {
+		slug: collectionSlug,
+	});
+
+	return graphqlResponse.collection;
 };

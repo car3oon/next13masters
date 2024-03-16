@@ -18,6 +18,11 @@ export const Navbar = () => {
 					</ActiveLink>
 				</li>
 				<li>
+					<ActiveLink activeClassName={activeClasses} exact={false} href="/collections">
+						Collections
+					</ActiveLink>
+				</li>
+				<li>
 					<ActiveLink activeClassName={activeClasses} exact={false} href="/products/1">
 						All
 					</ActiveLink>

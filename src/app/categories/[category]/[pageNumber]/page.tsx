@@ -8,18 +8,16 @@ export default async function CategoryPage({
 }: {
 	params: { category: string; pageNumber: string };
 }) {
-	const products = await getProductsByCategorySlug(params.category);
+	const response = await getProductsByCategorySlug(params.category);
 
-	if (!products) {
+	if (!response?.products) {
 		throw notFound();
 	}
 
 	return (
 		<>
-			<h1 className="mb-3 text-2xl font-bold">
-				Products from category: {params.category}, page {params.pageNumber}
-			</h1>
-			<ProductList products={products} />
+			<h1 className="mb-3 text-2xl font-bold">Products from category: {response.name}</h1>
+			<ProductList products={response.products} />
 		</>
 	);
 }
