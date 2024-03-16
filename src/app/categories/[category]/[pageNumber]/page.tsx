@@ -16,7 +16,7 @@ export default async function CategoryPage({
 
 	return (
 		<>
-			<h1 className="mb-3 text-2xl font-bold">Products from category: {response.name}</h1>
+			<h1 className="mb-4 text-2xl font-bold">Products from category: {response.name}</h1>
 			<ProductList products={response.products} />
 		</>
 	);
