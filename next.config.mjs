@@ -11,10 +11,34 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "naszsklep-api.vercel.app",
-				pathname: "/images/**",
+				hostname: "static-ourstore.hyperfunctor.com",
+				pathname: "/uploads/**",
 			},
 		],
+	},
+	redirects: async () => {
+		return [
+			{
+				source: "/products/t-shirts",
+				destination: "/products/t-shirts/1",
+				permanent: false,
+			},
+			{
+				source: "/categories/accessories",
+				destination: "/categories/accessories/1",
+				permanent: false,
+			},
+			{
+				source: "/categories/hoodies",
+				destination: "/categories/hoodies/1",
+				permanent: false,
+			},
+			{
+				source: "/categories/t-shirts",
+				destination: "/categories/t-shirts/1",
+				permanent: false,
+			},
+		];
 	},
 };
 
