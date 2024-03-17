@@ -15,7 +15,7 @@ export const Navbar = () => {
 					<SearchBox />
 				</Suspense>
 			</div>
-			<ul className="flex gap-4">
+			<ul className="flex gap-4" role="navigation">
 				<li>
 					<ActiveLink activeClassName={activeClasses} exact={true} href="/">
 						Home
@@ -27,12 +27,26 @@ export const Navbar = () => {
 					</ActiveLink>
 				</li>
 				<li>
+					<ActiveLink activeClassName={activeClasses} exact={false} href="/categories/accessories">
+						Accessories
+					</ActiveLink>
+				</li>
+				<li>
 					<ActiveLink activeClassName={activeClasses} exact={false} href="/collections">
 						Collections
 					</ActiveLink>
 				</li>
 				<li>
-					<ActiveLink activeClassName={activeClasses} exact={false} href="/products/1">
+					<ActiveLink
+						activeClassName={activeClasses}
+						exact={false}
+						href="/collections/summer-vibes"
+					>
+						Summer Vibes
+					</ActiveLink>
+				</li>
+				<li>
+					<ActiveLink activeClassName={activeClasses} exact={false} href="/products">
 						All
 					</ActiveLink>
 				</li>

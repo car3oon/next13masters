@@ -29,7 +29,7 @@ export const ActiveLink = ({
 		<Link
 			className={clsx("hover:underline", className, isActive && activeClassName)}
 			href={href as Route}
-			aria-current={isActive ? "page" : "false"}
+			aria-current={isActive ? "page" : undefined}
 		>
 			{children}
 		</Link>
