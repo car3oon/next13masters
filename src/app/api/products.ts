@@ -2,6 +2,7 @@ import {
 	ProductGetDocument,
 	ProductsGetByCategorySlugDocument,
 	ProductsGetByCollectionSlugDocument,
+	ProductsGetBySearchDocument,
 	ProductsGetListDocument,
 	type ProductListItemFragment,
 } from "@/gql/graphql";
@@ -36,4 +37,12 @@ export const getProductsByCollectionSlug = async (collectionSlug: string) => {
 	});
 
 	return graphqlResponse.collection;
+};
+
+export const getProductsBySearch = async (searchQuery: string) => {
+	const graphqlResponse = await executeGraphql(ProductsGetBySearchDocument, {
+		search: searchQuery,
+	});
+
+	return graphqlResponse.products.data;
 };
